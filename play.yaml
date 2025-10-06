@@ -1,0 +1,14 @@
+ - name: Play1
+   hosts: servers
+   become: yes
+   tasks:
+     - name: Create Developer Group
+       group:
+         name: developer
+         state: present
+     - name: Create user test in Developer group
+       user:
+         name: test
+         state: present
+         uid: 8000
+         groups: developer
